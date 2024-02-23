@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="MIRAGE: Cross-Embodiment Zero-Shot Policy Transfer with Cross-Painting">
+  <meta name="keywords" content="Cross-Embodiment, Cross-Painting, Robotics">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MIRAGE: Cross-Embodiment Zero-Shot Policy Transfer with Cross-Painting</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Captions</title>
+  <style>
+      .video-caption {
+        text-align: center;
+        margin-top: 8px;
+        font-size: 14px;
+        color: #333;
+      }
+  </style>
+</head>
+
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">MIRAGE: Cross-Embodiment Zero-Shot Policy Transfer with Cross-Painting</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://https://yunliangchen.github.io">Lawrence Yunliang Chen*</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=V6e6hncAAAAJ&hl=en">Karthik Dharmarajan*</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=qeOl9rMAAAAJ&hl=en&oi=ao">Kush Hari*</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.chenfengx.com">Chenfeng Xu</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://quanvuong.github.io">Quan Vuong</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://goldberg.berkeley.edu">Ken Goldberg</a><sup>1</sup>,
+            </span>
+            
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of California, Berkeley,</span>
+            <span class="author-block"><sup>2</sup>Google-Deepmind</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=" "
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href=" "
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href=" "
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=" "
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img id="teaser" src="./static/images/teaser.png" alt="Teaser Image" style="height: 100%;">
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            The ability to reuse collected data and transfer trained policies between robots could alleviate the burden of additional data collection and training. While existing approaches such as pretraining plus finetuning and co-training show promise, they do not generalize to a robot unseen in training. Focusing on common robot arms with similar workspaces and 2-jaw grippers, we investigate the feasibility of zero-shot transfer. Through simulation studies on 8 manipulation tasks, we find that state-based Cartesian control policies can successfully zero-shot transfer to a target robot after accounting for forward dynamics. To address robot visual disparities for vision-based policies, we introduce MIRAGE, which uses “cross-painting”—masking out the unseen target robot and inpainting the seen source robot— during execution in real time so that it appears to the policy as if the trained source robot is performing the task. Despite its simplicity, our extensive simulation and physical experiments provide strong evidence that MIRAGE can successfully zero-shot transfer between different robot arms and grippers with only minimal performance degradation on a variety of manipulation tasks such as picking, stacking, and assembly.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/teaser.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <figure>
+        <img id="teaser" src="./static/images/Screenshot 2024-02-22 at 11.06.17 PM.png" alt="robots Image" style="height: 100%;">
+        <figcaption>
+          Simulation Tasks and Robots. The simulation evaluation utilizes the Robosuite simulator with Lift, Stack, Can Pick-and-Place, Two Piece Assembly, and Square Peg Insertion tasks. Additionally, to study other policy classes, we evaluation policy transfers in ORBIT with a block lifting task, and in RLBench with 2 tasks: Lifting a lid, and Pushing a button to turn on a lamp. For all policies, the source robot is Franka, while the target robots for each of the tasks are shown in the second row.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <figure>
+        <img id="teaser" src="./static/images/Screenshot 2024-02-23 at 12.05.49 AM.png" alt="robots Image" style="height: 100%;">
+        <figcaption>
+          Illustration of Mirage’s pipeline. We reproject the camera from the target to the source frame, and then apply cross-paint: mask out the target robot and inpaint the source robot. The resulted image is fed into the source robot’s policy.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <figure>
+        <img id="teaser" src="./static/images/image9.png" alt="sim experiments Image" style="height: 100%;">
+        <figcaption>
+          MIRAGE Results on Transferring Vision-Based Policies in Simulation. For each task and robot arm combination, the Oracle represents the performance of a vision-based policy assuming access to a ground truth rendering of the source robot given the state of the target robot, the Naive 0-shot method directly passes the visual observation of the target robot to the policy, and MIRAGE uses cross-painting to generate the visual inputs for the policy. The methods are evaluated with the target robots having the source gripper (Franka gripper) and the original target gripper (Robotiq gripper) presented in that order.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<style>
+  .results-carousel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* This will space out the items evenly */
+  }
+
+  .item {
+    flex-basis: 100%; /* This ensures two items per row, allowing for some margin */
+    margin-bottom: 20px; /* Space between rows of items */
+  }
+
+  .video-caption {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 14px;
+    color: #333;
+  }
+
+  video {
+    width: 100%; /* This ensures the video takes up the full width of the item container */
+    height: auto; /* This keeps the aspect ratio of the video */
+  }
+</style>
+
+<!-- 
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/Lift - Different Robot, Different Gripper/combined_kinova3_lift.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Lift - Different Robot, Different Gripper - Combined Kinova3 Lift</p>
+        </div>
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/Lift - Different Robot, Different Gripper/combined_ur5e_lift.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Lift - Different Robot, Different Gripper - Combined UR5e Lift</p>
+        </div>
+        <div class="item item-shiba">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/Lift - Different Robot, Same Gripper/combined_kinova3_lift_franka_gripper.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Lift - Different Robot, Same Gripper - Combined Kinova3 Lift Franka Gripper</p>
+        </div>
+        <div class="item item-fullbody">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/Lift - Different Robot, Same Gripper/combined_ur5e_lift_franka_gripper.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Lift - Different Robot, Same Gripper - Combined UR5e Lift Franka Gripper</p>
+        </div>
+        <div class="item item-blueshirt">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/Stack - Different Robot, Different Gripper/combined_kinova3_stack.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Stack - Different Robot, Different Gripper - Combined Kinova3 Stack</p>
+        </div>
+        <div class="item item-mask">
+          <video poster="" id="mask" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/Stack - Different Robot, Different Gripper/combined_ur5e_stack.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Stack - Different Robot, Different Gripper - Combined UR5e Stack</p>
+        </div>
+        <div class="item item-coffee">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/Stack - Different Robot, Same Gripper/combined_kinova3_stack_franka_gripper.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Stack - Different Robot, Same Gripper - Combined Kinova3 Stack Franka Gripper</p>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/Stack - Different Robot, Same Gripper/combined_ur5e_stack_franka_gripper.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Stack - Different Robot, Same Gripper - Combined UR5e Stack Franka Gripper</p>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/Square - Different Robot, Different Gripper/combined_kinova3_square.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Square - Different Robot, Different Gripper - Combined Kinova3 Square</p>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/Square - Different Robot, Different Gripper/combined_ur5e_square.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Square - Different Robot, Different Gripper - Combined UR5e Square</p>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/Two Piece Assembly - Different Robot, Different Gripper/combined_kinova3_two_piece.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Two Piece Assembly - Different Robot, Different Gripper - Combined Kinova3 Two Piece</p>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/Two Piece Assembly - Different Robot, Different Gripper/combined_ur5e_two_piece.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Two Piece Assembly - Different Robot, Different Gripper - Combined UR5e Two Piece</p>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/Two Piece Assembly - Different Robot, Same Gripper/combined_kinova3_two_piece_franka_gripper.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Two Piece Assembly - Different Robot, Same Gripper - Combined Kinova3 Two Piece Franka Gripper</p>
+        </div>
+        <div class="item item-toby">
+          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/Two Piece Assembly - Different Robot, Same Gripper/combined_ur5e_two_piece_franka_gripper.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Two Piece Assembly - Different Robot, Same Gripper - Combined UR5e Two Piece Franka Gripper</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container is-max-desktop"> <!-- Wrap the entire content in is-max-desktop container -->
+      <!-- Row for the Lift Task with Different Robot and Different Gripper -->
+      <div class="columns is-multiline">
+        <!-- Video item for Kinova3 -->
+        <div class="column is-half">
+          <video poster="" id="steve" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/Lift - Different Robot, Different Gripper/combined_kinova3_lift.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Lift - Different Robot, Different Gripper - Combined Kinova3 Lift</p>
+        </div>
+        <!-- Video item for UR5e -->
+        <div class="column is-half">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/Lift - Different Robot, Different Gripper/combined_ur5e_lift.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Lift - Different Robot, Different Gripper - Combined UR5e Lift</p>
+        </div>
+      </div>
+
+      <!-- Row for the Lift Task with Different Robot and Same Gripper -->
+      <div class="columns is-multiline">
+        <!-- Video item for Kinova3 with Franka Gripper -->
+        <div class="column is-half">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/Lift - Different Robot, Same Gripper/combined_kinova3_lift_franka_gripper.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Lift - Different Robot, Same Gripper - Combined Kinova3 Lift Franka Gripper</p>
+        </div>
+        <!-- Video item for UR5e with Franka Gripper -->
+        <div class="column is-half">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/Lift - Different Robot, Same Gripper/combined_ur5e_lift_franka_gripper.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Lift - Different Robot, Same Gripper - Combined UR5e Lift Franka Gripper</p>
+        </div>
+      </div>
+
+      <!-- Additional rows for other tasks -->
+      <!-- Row for the Stack Task with Different Robot and Different Gripper -->
+      <div class="columns is-multiline">
+        <!-- Video item for Kinova3 -->
+        <div class="column is-half">
+          <video poster="" id="blueshirt" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/Stack - Different Robot, Different Gripper/combined_kinova3_stack.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Stack - Different Robot, Different Gripper - Combined Kinova3 Stack</p>
+        </div>
+        <!-- Video item for UR5e -->
+        <div class="column is-half">
+          <video poster="" id="mask" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/Stack - Different Robot, Different Gripper/combined_ur5e_stack.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Stack - Different Robot, Different Gripper - Combined UR5e Stack</p>
+        </div>
+      </div>
+      <div class="columns is-multiline">
+      <div class="column is-half">
+        <video poster="" id="coffee" autoplay controls muted loop playsinline width="100%">
+          <source src="./static/videos/Stack - Different Robot, Same Gripper/combined_kinova3_stack_franka_gripper.mp4" type="video/mp4">
+        </video>
+        <p class="video-caption">Stack - Different Robot, Same Gripper - Combined Kinova3 Stack Franka Gripper</p>
+      </div>
+      <div class="column is-half">
+        <video poster="" id="toby-stack-ur5e" autoplay controls muted loop playsinline width="100%">
+          <source src="./static/videos/Stack - Different Robot, Same Gripper/combined_ur5e_stack_franka_gripper.mp4" type="video/mp4">
+        </video>
+        <p class="video-caption">Stack - Different Robot, Same Gripper - Combined UR5e Stack Franka Gripper</p>
+      </div>
+    </div>
+    <div class="columns is-multiline">
+      <!-- Square - Different Robot, Different Gripper -->
+      <div class="column is-half">
+        <video poster="" id="toby-square-kinova" autoplay controls muted loop playsinline width="100%">
+          <source src="./static/videos/Square - Different Robot, Different Gripper/combined_kinova3_square.mp4" type="video/mp4">
+        </video>
+        <p class="video-caption">Square - Different Robot, Different Gripper - Combined Kinova3 Square</p>
+      </div>
+    
+      <div class="column is-half">
+        <video poster="" id="toby-square-ur5e" autoplay controls muted loop playsinline width="100%">
+          <source src="./static/videos/Square - Different Robot, Different Gripper/combined_ur5e_square.mp4" type="video/mp4">
+        </video>
+        <p class="video-caption">Square - Different Robot, Different Gripper - Combined UR5e Square</p>
+      </div>
+    </div>
+
+    <div class="columns is-multiline">
+      <!-- Two Piece Assembly - Different and Same Gripper -->
+      <div class="column is-half">
+        <video poster="" id="toby-two-piece-kinova-diff" autoplay controls muted loop playsinline width="100%">
+          <source src="./static/videos/Two Piece Assembly - Different Robot, Different Gripper/combined_kinova3_two_piece.mp4" type="video/mp4">
+        </video>
+        <p class="video-caption">Two Piece Assembly - Different Robot, Different Gripper - Combined Kinova3 Two Piece</p>
+      </div>
+      <div class="column is-half">
+        <video poster="" id="toby-two-piece-ur5e-diff" autoplay controls muted loop playsinline width="100%">
+          <source src="./static/videos/Two Piece Assembly - Different Robot, Different Gripper/combined_ur5e_two_piece.mp4" type="video/mp4">
+        </video>
+        <p class="video-caption">Two Piece Assembly - Different Robot, Different Gripper - Combined UR5e Two Piece</p>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <figure>
+        <img id="teaser" src="./static/images/Screenshot 2024-02-09 at 3.46.14 AM.png" alt="sim experiments Image" style="height: 100%;">
+        <figcaption>
+          MIRAGE Results on Transferring Vision-Based Policies in Real. We evaluate MIRAGE on 4 tasks in 2 settings: Different Gripper: Transferring policies between the Franka gripper and the Robotiq 2F-85 gripper on a Franka robot. Different Robot: Using the Franka with either gripper as the source robot, and the UR5 robot with the Robotiq gripper as the target robot. Baseline: Diffusion Policy model trained for each task. Octo: Octo Base model finetuned on all tasks together.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <!-- Column for Tiger Task -->
+      <div class="column">
+        <h2 class="title is-3">Tiger Task</h2>
+        <div class="content">
+          <p>Cross-paint robot (UR5 and robotiq)</p>
+          <video id="tiger_robot" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/Tiger Task/tiger_combined.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="content">
+          <p>Cross-paint gripper (Franka)</p>
+          <video id="tiger_gripper" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/Tiger Task/tiger_combined_diff_gripper.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!-- Column for Open Drawer Task -->
+      <div class="column">
+        <h2 class="title is-3">Open Drawer Task</h2>
+        <div class="content">
+          <p>Cross-paint robot (UR5 and robotiq)</p>
+          <video id="drawer_robot" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/open drawer/drawer_combined.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="content">
+          <p>Cross-paint gripper (Franka)</p>
+          <video id="drawer_gripper" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/open drawer/drawer_combined_diff_gripper.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional rows for other tasks -->
+    <div class="columns is-centered">
+      <!-- Column for Toaster Task -->
+      <div class="column">
+        <h2 class="title is-3">Toaster Task</h2>
+        <div class="content">
+          <p>Cross-paint robot (UR5 and robotiq)</p>
+          <video id="toaster_robot" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toaster task/toaster_combined.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="content">
+          <p>Cross-paint gripper (Franka)</p>
+          <video id="toaster_gripper" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toaster task/toaster_combined_diff_gripper.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!-- Column for Cup Stacking Task -->
+      <div class="column">
+        <h2 class="title is-3">Cup Stacking Task</h2>
+        <div class="content">
+          <p>Cross-paint robot (UR5 and robotiq)</p>
+          <video id="cup_robot" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/cup stacking/cup_combined.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="content">
+          <p>Cross-paint gripper (Franka)</p>
+          <video id="cup_gripper" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/cup stacking/cup_combined_diff_gripper.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
