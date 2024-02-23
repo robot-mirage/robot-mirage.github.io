@@ -65,7 +65,7 @@
           <h1 class="title is-1 publication-title">MIRAGE: Cross-Embodiment Zero-Shot Policy Transfer with Cross-Painting</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://https://yunliangchen.github.io">Lawrence Yunliang Chen*</a><sup>1</sup>,</span>
+              <a href="https://yunliangchen.github.io">Lawrence Yunliang Chen*</a><sup>1</sup>,</span>
             <span class="author-block">
               <a href="https://scholar.google.com/citations?user=V6e6hncAAAAJ&hl=en">Karthik Dharmarajan*</a><sup>1</sup>,</span>
             <span class="author-block">
@@ -199,9 +199,9 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <figure>
-        <img id="teaser" src="./static/images/Screenshot 2024-02-23 at 12.05.49 AM.png" alt="robots Image" style="height: 100%;">
+        <img id="teaser" src="./static/images/inpainting_fig_v2.png" alt="robots Image" style="height: 100%;">
         <figcaption>
-          Illustration of Mirage’s pipeline. We reproject the camera from the target to the source frame, and then apply cross-paint: mask out the target robot and inpaint the source robot. The resulted image is fed into the source robot’s policy.
+          Illustration of Mirage’s pipeline. We reproject the camera from the target to the source frame if there is a camera angle change and then apply cross-paint: mask out the target robot, fill in the missing pixels, and then inpaint the source robot. The resulting image is fed into the source robot's policy.
         </figcaption>
       </figure>
     </div>
