@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="MIRAGE: Cross-Embodiment Zero-Shot Policy Transfer with Cross-Painting">
+        content="Mirage: Cross-Embodiment Zero-Shot Policy Transfer with Cross-Painting">
   <meta name="keywords" content="Cross-Embodiment, Cross-Painting, Robotics">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MIRAGE: Cross-Embodiment Zero-Shot Policy Transfer with Cross-Painting</title>
+  <title>Mirage: Cross-Embodiment Zero-Shot Policy Transfer with Cross-Painting</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -32,7 +32,7 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="icon" href="./static/images/Mirage_icon.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -62,15 +62,15 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">MIRAGE: Cross-Embodiment Zero-Shot Policy Transfer with Cross-Painting</h1>
+          <h1 class="title is-1 publication-title">Mirage: Cross-Embodiment Zero-Shot Policy Transfer with Cross-Painting</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://yunliangchen.github.io">Lawrence Yunliang Chen*</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=V6e6hncAAAAJ&hl=en">Karthik Dharmarajan*</a><sup>1</sup>,</span>
+                <a href="https://scholar.google.com/citations?user=qeOl9rMAAAAJ&hl=en&oi=ao">Kush Hari*</a><sup>1</sup>,
+              </span>
             <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=qeOl9rMAAAAJ&hl=en&oi=ao">Kush Hari*</a><sup>1</sup>,
-            </span>
+              <a href="https://kdharmarajan.com/">Karthik Dharmarajan*</a><sup>1</sup>,</span>
             <span class="author-block">
               <a href="https://www.chenfengx.com">Chenfeng Xu</a><sup>1</sup>,
             </span>
@@ -85,7 +85,7 @@
 
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>University of California, Berkeley,</span>
-            <span class="author-block"><sup>2</sup>Google-Deepmind</span>
+            <span class="author-block"><sup>2</sup>Google DeepMind</span>
           </div>
 
           <div class="column has-text-centered">
@@ -110,7 +110,7 @@
                 </a>
               </span>
               <!-- Video Link. -->
-              <span class="link-block">
+              <!-- <span class="link-block">
                 <a href=" "
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -118,7 +118,7 @@
                   </span>
                   <span>Video</span>
                 </a>
-              </span>
+              </span> -->
               <!-- Code Link. -->
               <span class="link-block">
                 <a href=" "
@@ -126,7 +126,7 @@
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code</span>
+                  <span>Code (Coming Soon)</span>
                   </a>
               </span>
             </div>
@@ -152,7 +152,7 @@
 
 
 
-<section class="section">
+<section class="hero is-light is-small">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
@@ -160,7 +160,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            The ability to reuse collected data and transfer trained policies between robots could alleviate the burden of additional data collection and training. While existing approaches such as pretraining plus finetuning and co-training show promise, they do not generalize to a robot unseen in training. Focusing on common robot arms with similar workspaces and 2-jaw grippers, we investigate the feasibility of zero-shot transfer. Through simulation studies on 8 manipulation tasks, we find that state-based Cartesian control policies can successfully zero-shot transfer to a target robot after accounting for forward dynamics. To address robot visual disparities for vision-based policies, we introduce MIRAGE, which uses “cross-painting”—masking out the unseen target robot and inpainting the seen source robot— during execution in real time so that it appears to the policy as if the trained source robot is performing the task. Despite its simplicity, our extensive simulation and physical experiments provide strong evidence that MIRAGE can successfully zero-shot transfer between different robot arms and grippers with only minimal performance degradation on a variety of manipulation tasks such as picking, stacking, and assembly.
+            The ability to reuse collected data and transfer trained policies between robots could alleviate the burden of additional data collection and training. While existing approaches such as pretraining plus finetuning and co-training show promise, they do not generalize to robots unseen in training. Focusing on common robot arms with similar workspaces and 2-jaw grippers, we investigate the feasibility of zero-shot transfer. Through simulation studies on 8 manipulation tasks, we find that state-based Cartesian control policies can successfully zero-shot transfer to a target robot after accounting for forward dynamics. To address robot visual disparities for vision-based policies, we introduce Mirage, which uses “cross-painting”—-masking out the unseen target robot and inpainting the seen source robot—-during execution in real time so that it appears to the policy as if the trained source robot were performing the task. Despite its simplicity, our extensive simulation and physical experiments provide strong evidence that Mirage can successfully zero-shot transfer between different robot arms and grippers with only minimal performance degradation on a variety of manipulation tasks such as picking, stacking, and assembly, significantly outperforming a generalist policy.
           </p>
         </div>
       </div>
@@ -184,9 +184,10 @@
 
 <section class="hero teaser">
   <div class="container is-max-desktop">
+    <h2 class="title is-3">Simulation Study</h2>
     <div class="hero-body">
       <figure>
-        <img id="teaser" src="./static/images/Screenshot 2024-02-22 at 11.06.17 PM.png" alt="robots Image" style="height: 100%;">
+        <img id="teaser" src="./static/images/Sim_Tasks_Robots_Fig.png" alt="robots Image" style="height: 100%;">
         <figcaption>
           Simulation Tasks and Robots. The simulation evaluation utilizes the Robosuite simulator with Lift, Stack, Can Pick-and-Place, Two Piece Assembly, and Square Peg Insertion tasks. Additionally, to study other policy classes, we evaluation policy transfers in ORBIT with a block lifting task, and in RLBench with 2 tasks: Lifting a lid, and Pushing a button to turn on a lamp. For all policies, the source robot is Franka, while the target robots for each of the tasks are shown in the second row.
         </figcaption>
@@ -197,9 +198,10 @@
 
 <section class="hero teaser">
   <div class="container is-max-desktop">
+    <h2 class="title is-3">Mirage Pipeline</h2>
     <div class="hero-body">
       <figure>
-        <img id="teaser" src="./static/images/inpainting_fig_v2.png" alt="robots Image" style="height: 100%;">
+        <img id="teaser" src="./static/images/mirage_pipeline.png" alt="robots Image" style="height: 100%;">
         <figcaption>
           Illustration of Mirage’s pipeline. We reproject the camera from the target to the source frame if there is a camera angle change and then apply cross-paint: mask out the target robot, fill in the missing pixels, and then inpaint the source robot. The resulting image is fed into the source robot's policy.
         </figcaption>
@@ -212,11 +214,12 @@
 
 <section class="hero teaser">
   <div class="container is-max-desktop">
+    <h2 class="title is-3">Simulation Experiments</h2>
     <div class="hero-body">
       <figure>
-        <img id="teaser" src="./static/images/image9.png" alt="sim experiments Image" style="height: 100%;">
+        <img id="teaser" src="./static/images/sim_results.png" alt="sim experiments Image" style="height: 100%;">
         <figcaption>
-          MIRAGE Results on Transferring Vision-Based Policies in Simulation. For each task and robot arm combination, the Oracle represents the performance of a vision-based policy assuming access to a ground truth rendering of the source robot given the state of the target robot, the Naive 0-shot method directly passes the visual observation of the target robot to the policy, and MIRAGE uses cross-painting to generate the visual inputs for the policy. The methods are evaluated with the target robots having the source gripper (Franka gripper) and the original target gripper (Robotiq gripper) presented in that order.
+          Mirage Results on Transferring Vision-Based Policies in Simulation. For each task and robot arm combination, the Oracle represents the performance of a vision-based policy assuming access to a ground truth rendering of the source robot given the state of the target robot, the Naive 0-shot method directly passes the visual observation of the target robot to the policy, and Mirage uses cross-painting to generate the visual inputs for the policy. The methods are evaluated with the target robots having the source gripper (Franka gripper) and the original target gripper (Robotiq gripper) presented in that order.
         </figcaption>
       </figure>
     </div>
@@ -456,7 +459,7 @@
       <figure>
         <img id="teaser" src="./static/images/Screenshot 2024-02-09 at 3.46.14 AM.png" alt="sim experiments Image" style="height: 100%;">
         <figcaption>
-          MIRAGE Results on Transferring Vision-Based Policies in Real. We evaluate MIRAGE on 4 tasks in 2 settings: Different Gripper: Transferring policies between the Franka gripper and the Robotiq 2F-85 gripper on a Franka robot. Different Robot: Using the Franka with either gripper as the source robot, and the UR5 robot with the Robotiq gripper as the target robot. Baseline: Diffusion Policy model trained for each task. Octo: Octo Base model finetuned on all tasks together.
+          Mirage Results on Transferring Vision-Based Policies in Real. We evaluate Mirage on 4 tasks in 2 settings: Different Gripper: Transferring policies between the Franka gripper and the Robotiq 2F-85 gripper on a Franka robot. Different Robot: Using the Franka with either gripper as the source robot, and the UR5 robot with the Robotiq gripper as the target robot. Baseline: Diffusion Policy model trained for each task. Octo: Octo Base model finetuned on all tasks together.
         </figcaption>
       </figure>
     </div>
@@ -466,6 +469,7 @@
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
+      <h2 class="title is-3">Physical Experiments</h2>
       <!-- Column for Tiger Task -->
       <div class="column">
         <h2 class="title is-3">Tiger Task</h2>
@@ -544,7 +548,14 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>
+    <pre>@article{chen2024mirage,
+      title={Mirage: Cross-Embodiment Zero-Shot Policy Transfer with Cross-Painting},
+      author={Lawrence Yunliang Chen and Karthik Dharmarajan and Kush Hari and Quan Vuong and Ken Goldberg},
+      year={2024},
+      eprint={TODO},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO}
+}<code>
 </code></pre>
   </div>
 </section>
@@ -552,7 +563,7 @@
 
 <footer class="footer">
   <div class="container">
-    <div class="content has-text-centered">
+    <!-- <div class="content has-text-centered">
       <a class="icon-link"
          href="./static/videos/nerfies_paper.pdf">
         <i class="fas fa-file-pdf"></i>
@@ -560,10 +571,11 @@
       <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
         <i class="fab fa-github"></i>
       </a>
-    </div>
+    </div> -->
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
+          <p>Website template modified from <a href="https://nerfies.github.io/">NeRFies</a>.</p>
           <p>
             This website is licensed under a <a rel="license"
                                                 href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
