@@ -241,8 +241,7 @@
           <p>
             Results below show that most unseen target robots achieve very high task success rates, especially with the same gripper as the source robot. This suggests that the kinematic differences among the robot arms are relatively insignificant. This holds for policies trained using IL and RL, as well as open loop and closed loop. 
           </p>
-        </div>
-        <div class="content has-text-centered">
+        </div>        <div class="hero-body">
           <figure>
             <img id="teaser" src="./static/images/control_study_results.png" alt="control study results" style="height: 100%;">
             <figcaption>
@@ -261,16 +260,31 @@
 
 
 
-<section class="hero teaser">
+<section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3">Mirage Pipeline</h2>
-    <div class="hero-body">
-      <figure>
-        <img id="teaser" src="./static/images/mirage_pipeline.png" alt="robots Image" style="height: 100%;">
-        <figcaption>
-          Illustration of Mirage’s pipeline. We reproject the camera from the target to the source frame if there is a camera angle change and then apply cross-paint: mask out the target robot, fill in the missing pixels, and then inpaint the source robot. The resulting image is fed into the source robot's policy.
-        </figcaption>
-      </figure>
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <!-- Mirage Pipeline -->
+        <h2 class="title is-3">Mirage Pipeline</h2>
+        <div class="content has-text-justified">
+          <p>
+            We propose Mirage, a strategy to zero-shot transfer a trained vision-based policy from the source robot to the target robot. The key idea is “cross-painting”: replacing the target robot with the source robot in the camera observations at test time so that it appears to the policy as if the source robot were performing the task.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <figure>
+            <img id="teaser" src="./static/images/mirage_pipeline.png" alt="robots Image" style="height: 100%;">
+            <figcaption>
+              Illustration of Mirage’s pipeline.
+            </figcaption>
+          </figure>
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            We reproject the camera from the target frame to the source frame if there is a non-negligible camera angle change and then apply cross-painting: (1) use the segmentation mask provided by a renderer (e.g., Gazebo) to mask out the target robot, (2) apply OpenCV’s inpainting algorithm to fill in the missing pixels, and (3) overlay Gazebo's rendering of the source robot URDF onto the image. The resulting image is fed into the source robot's policy to obtained the action, which is executed after a coordinate frame transform with a blocking or high-gain controller.
+          </p>
+        </div>
+        <!--/ Mirage Pipeline. -->
     </div>
   </div>
 </section>
