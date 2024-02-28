@@ -201,7 +201,6 @@
       </div>
     </div>
     <!--/ Paper video. -->
-    <br/>
   </div>
 </section>
 
@@ -212,41 +211,42 @@
     <div class="columns is-centered">
       <div class="column is-full-width">
         <!-- A Simulation Study -->
-        <h2 class="title is-3">A Simulation Study</h2>
+        <h2 class="title is-3">A Motivating Study</h2>
 
         <!-- Question. -->
-        <h3 class="title is-4">Interpolating states</h3>
+        <h3 class="title is-4">Q: Can the target robot complete a task by querying a state-based policy of the source robot?</h3>
         <div class="content has-text-justified">
           <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
+            Imagine there is a source robot (“oracle”) teaching a target robot to perform a task side by side in a duplicate environment. At each time step, the source robot sees the state of the target environment, puts its objects and end effector to the same poses, and uses its policy to move its end effector to a new pose. The target robot observes the source robot and also moves its end effector there.
           </p>
+          <p>We ask: can the target robot successfully complete a task by querying a state-based policy of the source robot in this fashion?</p>
         </div>
         <div class="hero-body">
           <figure>
             <img id="teaser" src="./static/images/Sim_Tasks_Robots_Fig.png" alt="robots image" style="height: 100%;">
             <figcaption>
-              Simulation Tasks and Robots. The simulation evaluation utilizes the Robosuite simulator with Lift, Stack, Can Pick-and-Place, Two Piece Assembly, and Square Peg Insertion tasks. Additionally, to study other policy classes, we evaluation policy transfers in ORBIT with a block lifting task, and in RLBench with 2 tasks: Lifting a lid, and Pushing a button to turn on a lamp. For all policies, the source robot is Franka, while the target robots for each of the tasks are shown in the second row.
+              Simulation Tasks and Robots. We use 5 tasks in Robosuite: Lift, Stack, Can Pick-and-Place, Two Piece Assembly, and Square Peg Insertion, on 5 different target robots. In ORBIT, we select the block lifting task with the UR5 as the target robot. In RLBench, we select 2 tasks: Lifting a lid, and Pushing a button to turn on a lamp, with UR5 and Sawyer as the target robots.
             </figcaption>
           </figure>
         </div>
+        <div class="content has-text-justified">
+          <p>
+            We consider 8 tasks across 3 simulators (<a href="https://robosuite.ai/">Robosuite</a>, <a href="https://isaac-orbit.github.io/">ORBIT</a>, and <a href="https://sites.google.com/view/rlbench">RLBench</a>) with policies trained using imitation learning for Robosuite tasks and RL for ORBIT and RLBench. For all tasks, we train the source state-based policy on the Franka robot and evaluate the success rates on different target robots using the test-time execution strategy mentioned above. 
+          </p>
         <!--/ Question. -->
 
         <!-- Results. -->
         <h3 class="title is-4">Results</h3>
         <div class="content has-text-justified">
           <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-            viewpoint such as a stabilized camera by playing back the training deformations.
+            Results below show that most unseen target robots achieve very high task success rates, especially with the same gripper as the source robot. This suggests that the kinematic differences among the robot arms are relatively insignificant. This holds for policies trained using IL and RL, as well as open loop and closed loop. 
           </p>
         </div>
         <div class="content has-text-centered">
           <figure>
             <img id="teaser" src="./static/images/control_study_results.png" alt="control study results" style="height: 100%;">
             <figcaption>
-              State-Based Transfer Experiment Results. We evaluate state-based policies trained for each task using a Franka robot across five different robots equipped either with the original Franka gripper or with each target robot’s default gripper. Results suggest that most unseen target robots can successfully perform the tasks using the source robot as its guide for where to move its gripper. ∗Jaco has a 3-jaw gripper,
-              which explains its lower success rates.
+              State-Based Policy Transfer Experiment Results. Results suggest that most unseen target robots can successfully perform the tasks using the source robot as its guide for where to move its gripper. Jaco has a 3-jaw gripper, which explains its lower success rates.
             </figcaption>
           </figure>
         </div>
