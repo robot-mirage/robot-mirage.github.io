@@ -155,7 +155,8 @@
     <div class="hero-body">
       <img id="teaser" src="./static/images/teaser.png" alt="Teaser Image" style="height: 100%;">
       <h2 class="subtitle has-text-centered">
-        We study zero-shot transfer of policy across embodiments. Assume there is a policy trained on a source robot (left). At test time, with an unseen target robot (middle), Mirage performs "cross-painting"---masking out the target robot in the image and inpainting the source robot at the same end effector pose---using robot URDFs and a renderer. By creating an illusion to the source robot policy (right) as if the source robot were performing the task, Mirage queries the source policy with the cross-painted image to obtain the source robot's action. The target robot then uses a forward dynamics model to obtain the desired end effector pose in the target robot frame and executes the steps with a blocking controller. Mirage can successfully zero-shot transfer policies across the same robots with different grippers (bottom left), different robots with the same gripper (bottom right), and different robots with different grippers (top).
+        <p>We study <b>zero-shot transfer of policy across embodiments.</b></p>
+        <p>Assume there is a policy trained on a source robot (left). At test time, with an unseen target robot (middle), Mirage performs "cross-painting"---masking out the target robot in the image and inpainting the source robot at the same end effector pose---using robot URDFs and a renderer. By creating an illusion to the source robot policy (right) as if the source robot were performing the task, Mirage queries the source policy with the cross-painted image to obtain the action.</p>
       </h2>
     </div>
   </div>
@@ -197,26 +198,68 @@
             <source src="./static/videos/video.mp4" type="video/mp4">
           </video>
         </div>
-        <div class="content has-text-justified"><p></p></div>
       </div>
     </div>
     <!--/ Paper video. -->
+    <br/>
   </div>
 </section>
 
-<section class="hero teaser">
+
+
+<section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3">Simulation Study</h2>
-    <div class="hero-body">
-      <figure>
-        <img id="teaser" src="./static/images/Sim_Tasks_Robots_Fig.png" alt="robots Image" style="height: 100%;">
-        <figcaption>
-          Simulation Tasks and Robots. The simulation evaluation utilizes the Robosuite simulator with Lift, Stack, Can Pick-and-Place, Two Piece Assembly, and Square Peg Insertion tasks. Additionally, to study other policy classes, we evaluation policy transfers in ORBIT with a block lifting task, and in RLBench with 2 tasks: Lifting a lid, and Pushing a button to turn on a lamp. For all policies, the source robot is Franka, while the target robots for each of the tasks are shown in the second row.
-        </figcaption>
-      </figure>
-    </div>
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <!-- A Simulation Study -->
+        <h2 class="title is-3">A Simulation Study</h2>
+
+        <!-- Question. -->
+        <h3 class="title is-4">Interpolating states</h3>
+        <div class="content has-text-justified">
+          <p>
+            We can also animate the scene by interpolating the deformation latent codes of two input
+            frames. Use the slider here to linearly interpolate between the left frame and the right
+            frame.
+          </p>
+        </div>
+        <div class="hero-body">
+          <figure>
+            <img id="teaser" src="./static/images/Sim_Tasks_Robots_Fig.png" alt="robots image" style="height: 100%;">
+            <figcaption>
+              Simulation Tasks and Robots. The simulation evaluation utilizes the Robosuite simulator with Lift, Stack, Can Pick-and-Place, Two Piece Assembly, and Square Peg Insertion tasks. Additionally, to study other policy classes, we evaluation policy transfers in ORBIT with a block lifting task, and in RLBench with 2 tasks: Lifting a lid, and Pushing a button to turn on a lamp. For all policies, the source robot is Franka, while the target robots for each of the tasks are shown in the second row.
+            </figcaption>
+          </figure>
+        </div>
+        <!--/ Question. -->
+
+        <!-- Results. -->
+        <h3 class="title is-4">Results</h3>
+        <div class="content has-text-justified">
+          <p>
+            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
+            viewpoint such as a stabilized camera by playing back the training deformations.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <figure>
+            <img id="teaser" src="./static/images/control_study_results.png" alt="control study results" style="height: 100%;">
+            <figcaption>
+              State-Based Transfer Experiment Results. We evaluate state-based policies trained for each task using a Franka robot across five different robots equipped either with the original Franka gripper or with each target robot’s default gripper. Results suggest that most unseen target robots can successfully perform the tasks using the source robot as its guide for where to move its gripper. ∗Jaco has a 3-jaw gripper,
+              which explains its lower success rates.
+            </figcaption>
+          </figure>
+        </div>
+        <!--/ Results. -->
+
+        </div>
+      </div>
+      <!--/ A Simulation Study. -->
   </div>
 </section>
+
+
+
 
 <section class="hero teaser">
   <div class="container is-max-desktop">
