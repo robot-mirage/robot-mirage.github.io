@@ -32,7 +32,7 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" type="image/png" href="./static/images/Mirage_icon.png">
+  <link rel="icon" type="image/png" href="./static/images/mirage_icon.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -154,6 +154,9 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <img id="teaser" src="./static/images/teaser.png" alt="Teaser Image" style="height: 100%;">
+      <h2 class="subtitle has-text-centered">
+        We study zero-shot transfer of policy across embodiments. Assume there is a policy trained on a source robot (left). At test time, with an unseen target robot (middle), Mirage performs "cross-painting"---masking out the target robot in the image and inpainting the source robot at the same end effector pose---using robot URDFs and a renderer. By creating an illusion to the source robot policy (right) as if the source robot were performing the task, Mirage queries the source policy with the cross-painted image to obtain the source robot's action. The target robot then uses a forward dynamics model to obtain the desired end effector pose in the target robot frame and executes the steps with a blocking controller. Mirage can successfully zero-shot transfer policies across the same robots with different grippers (bottom left), different robots with the same gripper (bottom right), and different robots with different grippers (top).
+      </h2>
     </div>
   </div>
 </section>
@@ -164,7 +167,7 @@
 
 
 
-<section class="hero is-light is-small">
+<section class="section">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
@@ -172,7 +175,10 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            The ability to reuse collected data and transfer trained policies between robots could alleviate the burden of additional data collection and training. While existing approaches such as pretraining plus finetuning and co-training show promise, they do not generalize to robots unseen in training. Focusing on common robot arms with similar workspaces and 2-jaw grippers, we investigate the feasibility of zero-shot transfer. Through simulation studies on 8 manipulation tasks, we find that state-based Cartesian control policies can successfully zero-shot transfer to a target robot after accounting for forward dynamics. 
+            The ability to reuse collected data and transfer trained policies between robots could alleviate the burden of additional data collection and training. While existing approaches such as pretraining plus finetuning and co-training show promise, they do not generalize to robots unseen in training. 
+          </p>
+          <p>  
+            Focusing on common robot arms with similar workspaces and 2-jaw grippers, we investigate the feasibility of zero-shot transfer. Through simulation studies on 8 manipulation tasks, <strong>we find that state-based Cartesian control policies can successfully zero-shot transfer to a target robot after accounting for forward dynamics.</strong> 
           </p>
           <p>  
             To address robot visual disparities for vision-based policies, <strong>we introduce Mirage, which uses “cross-painting”—-masking out the unseen target robot and inpainting the seen source robot—-during execution in real time so that it appears to the policy as if the trained source robot were performing the task.</strong> Despite its simplicity, our extensive simulation and physical experiments provide strong evidence that <strong>Mirage can successfully zero-shot transfer between different robot arms and grippers with only minimal performance degradation on a variety of manipulation tasks such as picking, stacking, and assembly, significantly outperforming a generalist policy.</strong>
@@ -191,6 +197,7 @@
             <source src="./static/videos/video.mp4" type="video/mp4">
           </video>
         </div>
+        <div class="content has-text-justified"><p></p></div>
       </div>
     </div>
     <!--/ Paper video. -->
@@ -590,19 +597,7 @@
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
-          <p>Website template modified from <a href="https://nerfies.github.io/">NeRFies</a>.</p>
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
-          </p>
+          <p>Website template borrowed from <a href="https://nerfies.github.io/">NeRFies</a> made by the amazing <a href="https://keunhong.com/">Keunhong Park</a>.</p>
         </div>
       </div>
     </div>
