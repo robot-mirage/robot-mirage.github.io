@@ -437,7 +437,7 @@
 <section class="hero is-light is-small">
   <div class="hero-body">
     <div class="container is-max-desktop"> <!-- Wrap the entire content in is-max-desktop container -->
-      <h2 class="title is-4">Videos</h2>
+      <h2 class="title is-4">Videos (Same Gripper)</h2>
         <div class="content has-text-justified">
           <p>
             The videos below show transferring from Franka to UR5 and Kinova3 but with the same Franka gripper. For each video, the left shows the oracle rendering, the middle shows the Mirage cross-painted image, and the right shows the target robot image.
@@ -447,21 +447,39 @@
       <!-- Row for the Lift Task with Different Robot and Same Gripper -->
       <h2 class="title is-5">Lift</h2>
       <div class="columns is-multiline">
-        <!-- Video item for Kinova3 with Franka Gripper -->
-        <div class="column is-half">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline width="100%">
-            <source src="./static/videos/Lift - Different Robot, Same Gripper/combined_kinova3_lift_franka_gripper.mp4" type="video/mp4">
-          </video>
-          <p class="video-caption">Lift - Different Robot, Same Gripper - Combined Kinova3 Lift Franka Gripper</p>
-        </div>
         <!-- Video item for UR5e with Franka Gripper -->
         <div class="column is-half">
           <video poster="" id="fullbody" autoplay controls muted loop playsinline width="100%">
             <source src="./static/videos/Lift - Different Robot, Same Gripper/combined_ur5e_lift_franka_gripper.mp4" type="video/mp4">
           </video>
-          <p class="video-caption">Lift - Different Robot, Same Gripper - Combined UR5e Lift Franka Gripper</p>
+          <p class="video-caption">Oracle    Mirage (Cross-Painted)    Actual Target Robot</p>
+        </div>
+        <!-- Video item for Kinova3 with Franka Gripper -->
+        <div class="column is-half">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/Lift - Different Robot, Same Gripper/combined_kinova3_lift_franka_gripper.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Oracle    Mirage (Cross-Painted)    Actual Target Robot</p>
         </div>
       </div>
+
+      
+      <!-- Row for the Stack Task with Different Robot and Different Gripper -->
+      <div class="columns is-multiline">
+        <div class="column is-half">
+          <div class="column is-half">
+            <video poster="" id="toby-stack-ur5e" autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/Stack - Different Robot, Same Gripper/combined_ur5e_stack_franka_gripper.mp4" type="video/mp4">
+            </video>
+            <p class="video-caption">Oracle    Mirage (Cross-Painted)    Actual Target Robot</p>
+          </div>
+          <video poster="" id="coffee" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/Stack - Different Robot, Same Gripper/combined_kinova3_stack_franka_gripper.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Oracle    Mirage (Cross-Painted)    Actual Target Robot</p>
+        </div>
+      </div>
+      
 
 
       <!-- Row for the Lift Task with Different Robot and Different Gripper -->
@@ -483,22 +501,6 @@
         </div>
       </div>
 
-      <!-- Row for the Stack Task with Different Robot and Different Gripper -->
-      <div class="columns is-multiline">
-        <div class="column is-half">
-          <video poster="" id="coffee" autoplay controls muted loop playsinline width="100%">
-            <source src="./static/videos/Stack - Different Robot, Same Gripper/combined_kinova3_stack_franka_gripper.mp4" type="video/mp4">
-          </video>
-          <p class="video-caption">Stack - Different Robot, Same Gripper - Combined Kinova3 Stack Franka Gripper</p>
-        </div>
-        <div class="column is-half">
-          <video poster="" id="toby-stack-ur5e" autoplay controls muted loop playsinline width="100%">
-            <source src="./static/videos/Stack - Different Robot, Same Gripper/combined_ur5e_stack_franka_gripper.mp4" type="video/mp4">
-          </video>
-          <p class="video-caption">Stack - Different Robot, Same Gripper - Combined UR5e Stack Franka Gripper</p>
-        </div>
-      </div>
-      
 
       <!-- Additional rows for other tasks -->
       <!-- Row for the Stack Task with Different Robot and Different Gripper -->
