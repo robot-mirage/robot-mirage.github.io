@@ -206,7 +206,7 @@
 
 
 
-<section class="section">
+<section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
@@ -286,6 +286,7 @@
         <!--/ Mirage Pipeline. -->
     </div>
   </div>
+  <br/>
 </section>
 
 
@@ -302,16 +303,13 @@
       <figure>
         <img id="teaser" src="./static/images/sim_results.png" alt="sim experiments Image" style="height: 100%;">
         <figcaption>
-          Mirage Results on Transferring Vision-Based Policies in Simulation. 
+          Mirage Results on Transferring Vision-Based Policies in Simulation. For each task and robot arm combination, the Oracle represents the performance of a vision-based policy assuming access to a ground truth rendering of the source robot given the state of the target robot, the Naive 0-shot method directly passes the visual observation of the target robot to the policy, and Mirage uses cross-painting to generate the visual inputs for the policy. For each method, the first number represents the success rate when the target robot uses the source robot (Franka) gripper and the second number corresponds to using the target robot's default gripper (Robotiq gripper). 
         </figcaption>
       </figure>
     </div>
     <div class="content has-text-justified">
       <p>
-        For each task and robot arm combination, the Oracle represents the performance of a vision-based policy assuming access to a ground truth rendering of the source robot given the state of the target robot, the Naive 0-shot method directly passes the visual observation of the target robot to the policy, and Mirage uses cross-painting to generate the visual inputs for the policy. For each method, the first number represents the success rate when the target robot uses the source robot (Franka) gripper and the second number corresponds to using the target robot's default gripper (Robotiq gripper). 
-      </p>
-      <p>
-        We see that in all cases, Mirage significantly outperforms the naive 0-shot performance without any visual gap mitigation. This suggests that cross-painting can effectively bridge the visual differences of the robots. 
+        We see that in all cases, Mirage significantly outperforms the naive 0-shot performance without any visual gap mitigation. The gap between using an oracle and Mirage is at most 25%. This suggests that cross-painting can effectively bridge the visual differences of the robots. 
       </p>
     </div>
   </div>
@@ -439,7 +437,35 @@
 <section class="hero is-light is-small">
   <div class="hero-body">
     <div class="container is-max-desktop"> <!-- Wrap the entire content in is-max-desktop container -->
+      <h2 class="title is-4">Videos</h2>
+        <div class="content has-text-justified">
+          <p>
+            The videos below show transferring from Franka to UR5 and Kinova3 but with the same Franka gripper. For each video, the left shows the oracle rendering, the middle shows the Mirage cross-painted image, and the right shows the target robot image.
+          </p>
+        </div>
+      
+      <!-- Row for the Lift Task with Different Robot and Same Gripper -->
+      <h2 class="title is-5">Lift</h2>
+      <div class="columns is-multiline">
+        <!-- Video item for Kinova3 with Franka Gripper -->
+        <div class="column is-half">
+          <video poster="" id="shiba" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/Lift - Different Robot, Same Gripper/combined_kinova3_lift_franka_gripper.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Lift - Different Robot, Same Gripper - Combined Kinova3 Lift Franka Gripper</p>
+        </div>
+        <!-- Video item for UR5e with Franka Gripper -->
+        <div class="column is-half">
+          <video poster="" id="fullbody" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/Lift - Different Robot, Same Gripper/combined_ur5e_lift_franka_gripper.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Lift - Different Robot, Same Gripper - Combined UR5e Lift Franka Gripper</p>
+        </div>
+      </div>
+
+
       <!-- Row for the Lift Task with Different Robot and Different Gripper -->
+      <h2 class="title is-5">Stack</h2>
       <div class="columns is-multiline">
         <!-- Video item for Kinova3 -->
         <div class="column is-half">
@@ -457,23 +483,22 @@
         </div>
       </div>
 
-      <!-- Row for the Lift Task with Different Robot and Same Gripper -->
+      <!-- Row for the Stack Task with Different Robot and Different Gripper -->
       <div class="columns is-multiline">
-        <!-- Video item for Kinova3 with Franka Gripper -->
         <div class="column is-half">
-          <video poster="" id="shiba" autoplay controls muted loop playsinline width="100%">
-            <source src="./static/videos/Lift - Different Robot, Same Gripper/combined_kinova3_lift_franka_gripper.mp4" type="video/mp4">
+          <video poster="" id="coffee" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/Stack - Different Robot, Same Gripper/combined_kinova3_stack_franka_gripper.mp4" type="video/mp4">
           </video>
-          <p class="video-caption">Lift - Different Robot, Same Gripper - Combined Kinova3 Lift Franka Gripper</p>
+          <p class="video-caption">Stack - Different Robot, Same Gripper - Combined Kinova3 Stack Franka Gripper</p>
         </div>
-        <!-- Video item for UR5e with Franka Gripper -->
         <div class="column is-half">
-          <video poster="" id="fullbody" autoplay controls muted loop playsinline width="100%">
-            <source src="./static/videos/Lift - Different Robot, Same Gripper/combined_ur5e_lift_franka_gripper.mp4" type="video/mp4">
+          <video poster="" id="toby-stack-ur5e" autoplay controls muted loop playsinline width="100%">
+            <source src="./static/videos/Stack - Different Robot, Same Gripper/combined_ur5e_stack_franka_gripper.mp4" type="video/mp4">
           </video>
-          <p class="video-caption">Lift - Different Robot, Same Gripper - Combined UR5e Lift Franka Gripper</p>
+          <p class="video-caption">Stack - Different Robot, Same Gripper - Combined UR5e Stack Franka Gripper</p>
         </div>
       </div>
+      
 
       <!-- Additional rows for other tasks -->
       <!-- Row for the Stack Task with Different Robot and Different Gripper -->
@@ -493,20 +518,9 @@
           <p class="video-caption">Stack - Different Robot, Different Gripper - Combined UR5e Stack</p>
         </div>
       </div>
-      <div class="columns is-multiline">
-      <div class="column is-half">
-        <video poster="" id="coffee" autoplay controls muted loop playsinline width="100%">
-          <source src="./static/videos/Stack - Different Robot, Same Gripper/combined_kinova3_stack_franka_gripper.mp4" type="video/mp4">
-        </video>
-        <p class="video-caption">Stack - Different Robot, Same Gripper - Combined Kinova3 Stack Franka Gripper</p>
-      </div>
-      <div class="column is-half">
-        <video poster="" id="toby-stack-ur5e" autoplay controls muted loop playsinline width="100%">
-          <source src="./static/videos/Stack - Different Robot, Same Gripper/combined_ur5e_stack_franka_gripper.mp4" type="video/mp4">
-        </video>
-        <p class="video-caption">Stack - Different Robot, Same Gripper - Combined UR5e Stack Franka Gripper</p>
-      </div>
-    </div>
+
+      
+
     <div class="columns is-multiline">
       <!-- Square - Different Robot, Different Gripper -->
       <div class="column is-half">
