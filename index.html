@@ -674,10 +674,10 @@
   </div>
 </section>
 
+
 <section class="hero is-light is-small">
   <div class="hero-body">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
+    <div class="container is-max-desktop"> <!-- Wrap the entire content in is-max-desktop container -->
       <h2 class="title is-4">Videos</h2>
         <div class="content has-text-justified">
           <p>
@@ -685,17 +685,17 @@
           </p>
         </div>
       
-      <!-- Row for the Tiger Task -->
+      <!-- Row for the Tiger Pick-and-Place Task -->
       <h2 class="title is-5">Tiger Pick-and-Place</h2>
       <div class="columns is-multiline">
-        <!-- Video item for same robot -->
+        <!-- Video item for different gripper -->
         <div class="column is-half">
           <video id="tiger_gripper" autoplay controls muted loop playsinline height="100%">
             <source src="./static/videos/Tiger Task/tiger_combined_diff_gripper.mp4" type="video/mp4">
           </video>
           <p class="video-caption">Mirage (Cross-Painted)&emsp;&emsp;&emsp;Actual Target Robot</p>
         </div>
-        <!-- Video item for different robots -->
+        <!-- Video item for different robot -->
         <div class="column is-half">
           <video id="tiger_robot" autoplay controls muted loop playsinline height="100%">
             <source src="./static/videos/Tiger Task/tiger_combined.mp4" type="video/mp4">
@@ -704,77 +704,68 @@
         </div>
       </div>
 
-
-      <!-- <div class="column">
-        <h2 class="title is-3">Tiger Task</h2>
-        <div class="content">
-          <p>Cross-paint robot (UR5 and robotiq)</p>
-          <video id="tiger_robot" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/Tiger Task/tiger_combined.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="content">
-          <p>Cross-paint gripper (Franka)</p>
-          <video id="tiger_gripper" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/Tiger Task/tiger_combined_diff_gripper.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div> -->
-      <!-- Column for Open Drawer Task -->
-      <!-- <div class="column">
-        <h2 class="title is-3">Open Drawer Task</h2>
-        <div class="content">
-          <p>Cross-paint robot (UR5 and robotiq)</p>
-          <video id="drawer_robot" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/open drawer/drawer_combined.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="content">
-          <p>Cross-paint gripper (Franka)</p>
+      
+      <!-- Row for the Open Drawer Task -->
+      <h2 class="title is-5">Open Drawer</h2>
+      <div class="columns is-multiline">
+        <!-- Video item for different gripper -->
+        <div class="column is-half">
           <video id="drawer_gripper" autoplay controls muted loop playsinline height="100%">
             <source src="./static/videos/open drawer/drawer_combined_diff_gripper.mp4" type="video/mp4">
           </video>
+          <p class="video-caption">Mirage (Cross-Painted)&emsp;&emsp;&emsp;Actual Target Robot</p>
+        </div>
+        <!-- Video item for different robot -->
+        <div class="column is-half">
+          <video id="drawer_robot" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/open drawer/drawer_combined.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Mirage (Cross-Painted)&emsp;&emsp;&emsp;Actual Target Robot</p>
         </div>
       </div>
-    </div> -->
+      
 
-    <!-- Additional rows for other tasks -->
-    <div class="columns is-centered">
-      <!-- Column for Toaster Task -->
-      <div class="column">
-        <h2 class="title is-3">Toaster Task</h2>
-        <div class="content">
-          <p>Cross-paint robot (UR5 and robotiq)</p>
-          <video id="toaster_robot" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toaster task/toaster_combined.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="content">
-          <p>Cross-paint gripper (Franka)</p>
-          <video id="toaster_gripper" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/toaster task/toaster_combined_diff_gripper.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <!-- Column for Cup Stacking Task -->
-      <div class="column">
-        <h2 class="title is-3">Cup Stacking Task</h2>
-        <div class="content">
-          <p>Cross-paint robot (UR5 and robotiq)</p>
-          <video id="cup_robot" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/cup stacking/cup_combined.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="content">
-          <p>Cross-paint gripper (Franka)</p>
+      <!-- Row for the Stack Cup Task -->
+      <h2 class="title is-5">Stack Cup</h2>
+      <div class="columns is-multiline">
+        <!-- Video item for different gripper -->
+        <div class="column is-half">
           <video id="cup_gripper" autoplay controls muted loop playsinline height="100%">
             <source src="./static/videos/cup stacking/cup_combined_diff_gripper.mp4" type="video/mp4">
           </video>
+          <p class="video-caption">Mirage (Cross-Painted)&emsp;&emsp;&emsp;Actual Target Robot</p>
+        </div>
+        <!-- Video item for different robot -->
+        <div class="column is-half">
+          <video id="cup_robot" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/cup stacking/cup_combined.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Mirage (Cross-Painted)&emsp;&emsp;&emsp;Actual Target Robot</p>
         </div>
       </div>
+
+      
+      <!-- Row for the Toaster Task with Different Robot and Same Gripper -->
+      <h2 class="title is-5">Toaster</h2>
+      <div class="columns is-multiline">
+        <div class="column is-half">
+          <video id="toaster_gripper" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toaster task/toaster_combined_diff_gripper.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Mirage (Cross-Painted)&emsp;&emsp;&emsp;Actual Target Robot</p>
+        </div>
+        <div class="column is-half">
+          <video id="toaster_robot" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/toaster task/toaster_combined.mp4" type="video/mp4">
+          </video>
+          <p class="video-caption">Mirage (Cross-Painted)&emsp;&emsp;&emsp;Actual Target Robot</p>>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
+
 
 
 
