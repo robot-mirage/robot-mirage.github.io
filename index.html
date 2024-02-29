@@ -280,7 +280,7 @@
         </div>
         <div class="content has-text-justified">
           <p>
-            We reproject the camera from the target frame to the source frame if there is a non-negligible camera angle change and then apply cross-painting: (1) use the segmentation mask provided by a renderer (e.g., Gazebo) to mask out the target robot, (2) apply OpenCV’s inpainting algorithm to fill in the missing pixels, and (3) overlay Gazebo's rendering of the source robot URDF onto the image. The resulting image is fed into the source robot's policy to obtained the action, which is executed after a coordinate frame transform with a blocking or high-gain controller.
+            We reproject the camera from the target frame to the source frame if there is a non-negligible camera angle change and then apply cross-painting: (1) use the segmentation mask provided by a renderer (e.g., Gazebo) to mask out the target robot, (2) apply fast marching algorithm to fill in the missing pixels, and (3) overlay Gazebo's rendering of the source robot URDF onto the image. The resulting image is fed into the source robot's policy to obtained the action, which is executed after a coordinate frame transform with a blocking or high-gain controller.
           </p>
         </div>
         <!--/ Mirage Pipeline. -->
@@ -296,7 +296,7 @@
     <h2 class="title is-3">Simulation Experiments</h2>
     <div class="content has-text-justified">
       <p>
-        We choose Franka as the source robot and UR5e and Kinova Gen3 as the target robots and evaluate Mirage on the 5 tasks in Robosuite. We use the ground-truth forward dynamics. For each task, the source robot policy is trained with behavior cloning on the provided demonstration data using the LSTM architecture with the ResNet-18 visual encoder. The policies utilize 84x84 images, and \algoname operates at approximately 40 Hz to cross-paint the images. 
+        We choose Franka as the source robot and UR5e and Kinova Gen3 as the target robots and evaluate Mirage on the 5 tasks in Robosuite. We use the ground-truth forward dynamics. For each task, the source robot policy is trained with behavior cloning on the provided demonstration data using the LSTM architecture with the ResNet-18 visual encoder. The policies utilize 84x84 images, and Mirage operates at approximately 40 Hz to cross-paint the images. 
       </p>
     </div>
     <div class="content has-text-centered">
@@ -778,7 +778,7 @@
     <h2 class="title">BibTeX</h2>
     <pre>@article{chen2024mirage,
       title={Mirage: Cross-Embodiment Zero-Shot Policy Transfer with Cross-Painting},
-      author={Lawrence Yunliang Chen and Kush Hari and Karthik Dharmarajan and Quan Vuong and Ken Goldberg},
+      author={Lawrence Yunliang Chen and Kush Hari and Karthik Dharmarajan and Chenfeng Xu and Quan Vuong and Ken Goldberg},
       year={2024},
       eprint={TODO},
       archivePrefix={arXiv},
