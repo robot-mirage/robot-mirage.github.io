@@ -159,7 +159,7 @@
       <img id="teaser" src="./static/images/teaser.png" alt="Teaser Image" style="width: 100%;">
       <h2 class="subtitle has-text-centered">
         <p><b>We study zero-shot transfer of policy across embodiments.</b></p>
-        <p>Assume there is a policy trained on a source robot (left). At test time, with an unseen target robot (middle), Mirage performs "cross-painting"---masking out the target robot in the image and inpainting the source robot at the same end effector pose---using robot URDFs and a renderer. By creating an illusion to the source robot policy (right) as if the source robot were performing the task, Mirage queries the source policy with the cross-painted image to obtain the action.</p>
+        <p>Assume there is a policy trained on a source robot (left). At test time, with an unseen target robot (middle), Mirage performs "cross-painting"---masking out the target robot in the image and inpainting the source robot at the same end effector pose---using robot URDFs and a renderer. By creating an illusion as if the source robot were performing the task (right), Mirage queries the source policy with the cross-painted image to obtain the action.</p>
       </h2>
     </div>
   </div>
@@ -197,7 +197,7 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Video</h2>
         <div class="publication-video">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+          <video poster="" id="toby" autoplay controls muted loop playsinline width="100%">
             <source src="./static/videos/video.mp4" type="video/mp4">
           </video>
         </div>
