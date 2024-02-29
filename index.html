@@ -170,7 +170,7 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img id="teaser" src="./static/images/teaser.png" alt="Teaser Image" style="width: 100%;">
+      <img id="teaser" src="./static/images/teaser.png" class="aspect-ratio-img" alt="Teaser Image" style="width: 100%;">
       <h2 class="subtitle has-text-centered">
         <p>We study <b>zero-shot transfer of policy across embodiments.</b></p>
         <p>Assume there is a policy trained on a source robot (left). At test time, with an unseen target robot (middle), Mirage performs "cross-painting"---masking out the target robot in the image and inpainting the source robot at the same end effector pose---using robot URDFs and a renderer. By creating an illusion to the source robot policy (right) as if the source robot were performing the task, Mirage queries the source policy with the cross-painted image to obtain the action.</p>
