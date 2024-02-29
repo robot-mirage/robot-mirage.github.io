@@ -106,7 +106,7 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href=" "
+                <a href="https://robot-mirage.github.io/static/pdf/mirage_paper.pdf"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -283,7 +283,7 @@
         </div>
         <div class="content has-text-justified">
           <p>
-            We reproject the camera from the target frame to the source frame if there is a non-negligible camera angle change and then apply cross-painting: (1) use the segmentation mask provided by a renderer (e.g., Gazebo) to mask out the target robot, (2) apply fast marching algorithm to fill in the missing pixels, and (3) overlay Gazebo's rendering of the source robot URDF onto the image. The resulting image is fed into the source robot's policy to obtained the action, which is executed after a coordinate frame transform with a blocking or high-gain controller.
+            We reproject the camera from the target frame to the source frame if there is a non-negligible camera angle change and then apply cross-painting: (1) use the segmentation mask provided by a renderer (e.g., Gazebo) to mask out the target robot, (2) apply fast marching algorithm to fill in the missing pixels, and (3) overlay Gazebo's rendering of the source robot URDF onto the image. The resulting image is fed into the source robot's policy to obtain the action, which is executed after a coordinate frame transform with a blocking or high-gain controller.
           </p>
         </div>
         <!--/ Mirage Pipeline. -->
