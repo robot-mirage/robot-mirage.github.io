@@ -54,6 +54,7 @@
   </style>
 </head>
 
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0RJ1GX4S9L"></script>
 <script>
@@ -66,6 +67,7 @@
 
 
 
+  
 <body>
 
 
@@ -104,7 +106,7 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href=" "
+                <a href="./static/pdf/mirage_paper.pdf"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -150,13 +152,14 @@
   </div>
 </section>
 
+
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img id="teaser" src="./static/images/teaser.png" alt="Teaser Image" style="height: 100%;">
+      <img id="teaser" src="./static/images/teaser.png" alt="Teaser Image" style="width: 100%;">
       <h2 class="subtitle has-text-centered">
-        <p>We study <b>zero-shot transfer of policy across embodiments.</b></p>
-        <p>Assume there is a policy trained on a source robot (left). At test time, with an unseen target robot (middle), Mirage performs "cross-painting"---masking out the target robot in the image and inpainting the source robot at the same end effector pose---using robot URDFs and a renderer. By creating an illusion to the source robot policy (right) as if the source robot were performing the task, Mirage queries the source policy with the cross-painted image to obtain the action.</p>
+        <p><b>We study zero-shot transfer of policy across embodiments.</b></p>
+        <p>Assume there is a policy trained on a source robot (left). At test time, with an unseen target robot (middle), Mirage performs "cross-painting"---masking out the target robot in the image and inpainting the source robot at the same end effector pose---using robot URDFs and a renderer. By creating an illusion as if the source robot were performing the task (right), Mirage queries the source policy with the cross-painted image to obtain the action.</p>
       </h2>
     </div>
   </div>
@@ -223,7 +226,7 @@
         </div>
         <div class="hero-body">
           <figure>
-            <img id="teaser" src="./static/images/Sim_Tasks_Robots_Fig.png" alt="robots image" style="height: 100%;">
+            <img id="teaser" src="./static/images/Sim_Tasks_Robots_Fig.png" alt="robots image" style="width: 100%;">
             <figcaption>
               Simulation Tasks and Robots. We use 5 tasks in Robosuite: Lift, Stack, Can Pick-and-Place, Two Piece Assembly, and Square Peg Insertion, on 5 different target robots. In ORBIT, we select the block lifting task with the UR5 as the target robot. In RLBench, we select 2 tasks: Lifting a lid, and Pushing a button to turn on a lamp, with UR5 and Sawyer as the target robots.
             </figcaption>
@@ -243,7 +246,7 @@
           </p>
         </div>        <div class="hero-body">
           <figure>
-            <img id="teaser" src="./static/images/control_study_results.png" alt="control study results" style="height: 100%;">
+            <img id="teaser" src="./static/images/control_study_results.png" alt="control study results" style="width: 100%;">
             <figcaption>
               State-Based Policy Transfer Experiment Results. Results suggest that most unseen target robots can successfully perform the tasks using the source robot as its guide for where to move its gripper. Jaco has a 3-jaw gripper, which explains its lower success rates.
             </figcaption>
@@ -272,7 +275,7 @@
         </div>
         <div class="content has-text-centered">
           <figure>
-            <img id="teaser" src="./static/images/mirage_pipeline.png" alt="robots Image" style="height: 100%;">
+            <img id="teaser" src="./static/images/mirage_pipeline.png" alt="robots Image" style="width: 100%;">
             <figcaption>
               Illustration of Mirage’s pipeline.
             </figcaption>
@@ -280,7 +283,7 @@
         </div>
         <div class="content has-text-justified">
           <p>
-            We reproject the camera from the target frame to the source frame if there is a non-negligible camera angle change and then apply cross-painting: (1) use the segmentation mask provided by a renderer (e.g., Gazebo) to mask out the target robot, (2) apply OpenCV’s inpainting algorithm to fill in the missing pixels, and (3) overlay Gazebo's rendering of the source robot URDF onto the image. The resulting image is fed into the source robot's policy to obtained the action, which is executed after a coordinate frame transform with a blocking or high-gain controller.
+            We reproject the camera from the target frame to the source frame if there is a non-negligible camera angle change and then apply cross-painting: (1) use the segmentation mask provided by a renderer (e.g., Gazebo) to mask out the target robot, (2) apply fast marching algorithm to fill in the missing pixels, and (3) overlay Gazebo's rendering of the source robot URDF onto the image. The resulting image is fed into the source robot's policy to obtain the action, which is executed after a coordinate frame transform with a blocking or high-gain controller.
           </p>
         </div>
         <!--/ Mirage Pipeline. -->
@@ -296,12 +299,12 @@
     <h2 class="title is-3">Simulation Experiments</h2>
     <div class="content has-text-justified">
       <p>
-        We choose Franka as the source robot and UR5e and Kinova Gen3 as the target robots and evaluate Mirage on the 5 tasks in Robosuite. We use the ground-truth forward dynamics. For each task, the source robot policy is trained with behavior cloning on the provided demonstration data using the LSTM architecture with the ResNet-18 visual encoder. The policies utilize 84x84 images, and \algoname operates at approximately 40 Hz to cross-paint the images. 
+        We choose Franka as the source robot and UR5e and Kinova Gen3 as the target robots and evaluate Mirage on the 5 tasks in Robosuite. We use the ground-truth forward dynamics. For each task, the source robot policy is trained with behavior cloning on the provided demonstration data using the LSTM architecture with the ResNet-18 visual encoder. The policies utilize 84x84 images, and Mirage operates at approximately 40 Hz to cross-paint the images. 
       </p>
     </div>
     <div class="content has-text-centered">
       <figure>
-        <img id="teaser" src="./static/images/sim_results.png" alt="sim experiments Image" style="height: 100%;">
+        <img id="teaser" src="./static/images/sim_results.png" alt="sim experiments Image" style="width: 100%;">
         <figcaption>
           <strong>Mirage Results on Transferring Vision-Based Policies in Simulation.</strong> For each task and robot arm combination, the Oracle represents the performance of a vision-based policy assuming access to a ground truth rendering of the source robot given the state of the target robot, the Naive 0-shot method directly passes the visual observation of the target robot to the policy, and Mirage uses cross-painting to generate the visual inputs for the policy. For each method, the first number represents the success rate when the target robot uses the source robot (Franka) gripper and the second number corresponds to using the target robot's default gripper (Robotiq gripper). 
         </figcaption>
@@ -491,7 +494,7 @@
             <source src="./static/videos/Can - Different Robot, Same Gripper/combined_ur5e_can_franka_gripper.mp4" type="video/mp4">
           </video>
           <p class="video-caption">Oracle&emsp;&emsp;Mirage (Cross-Painted)&emsp;&emsp;Actual Target Robot</p>
-          <p>*Still frames in the Mirage images when the Gazebo IK solver fails to find a solution.</p>
+         
         </div>
         <!-- Video item for Kinova3 with Franka Gripper -->
         <div class="column is-half">
@@ -500,6 +503,7 @@
           </video>
           <p class="video-caption">Oracle&emsp;&emsp;Mirage (Cross-Painted)&emsp;&emsp;Actual Target Robot</p>
         </div>
+        <p>*Still frames in the Mirage images when the Gazebo IK solver fails to find a solution.</p>
       </div>
 
       
@@ -595,7 +599,7 @@
             <source src="./static/videos/Can - Different Robot, Different Gripper/combined_ur5e_can.mp4" type="video/mp4">
           </video>
           <p class="video-caption">Oracle&emsp;&emsp;Mirage (Cross-Painted)&emsp;&emsp;Actual Target Robot</p>
-          <p>*Still frames in the Mirage images when the Gazebo IK solver fails to find a solution.</p>
+          
         </div>
         <!-- Video item for Kinova3 -->
         <div class="column is-half">
@@ -604,6 +608,7 @@
           </video>
           <p class="video-caption">Oracle&emsp;&emsp;Mirage (Cross-Painted)&emsp;&emsp;Actual Target Robot</p>
         </div>
+        <p>*Still frames in the Mirage images when the Gazebo IK solver fails to find a solution.</p>
       </div>
       
       <!-- Row for the Two Piece Assembly Task with Different Robot and Different Gripper -->
@@ -662,7 +667,7 @@
     </div>
     <div class="content has-text-centered">
       <figure>
-        <img id="teaser" src="./static/images/real_results.png" alt="real experiments Image" style="height: 100%;">
+        <img id="teaser" src="./static/images/real_results.png" alt="real experiments Image" style="width: 100%;">
         <figcaption>
           <strong>Mirage Results on Transferring Vision-Based Policies in Real.</strong> We evaluate Mirage on 4 tasks in 2 settings: <strong>Different Gripper:</strong> Transferring policies between the Franka gripper and the Robotiq 2F-85 gripper on a Franka robot. <strong>Different Robot:</strong> Using the Franka with either gripper as the source robot, and the UR5 robot with the Robotiq gripper as the target robot. <strong>Baseline/Baseline 0-shot:</strong> Separate Diffusion Policy models trained on the source robot data for each task and evaluated on the source robot or zero-shot on the target embodiments. <strong>Octo:</strong> Octo Base model finetuned on the source robot data from all tasks together and evaluated on the source robot or zero-shot on the target embodiments. <strong>Mirage:</strong> Evaluation of zero-shot transfer to the target embodiments using Mirage with the source policy being the corresponding baseline Diffusion Policy models.
         </figcaption>
@@ -772,13 +777,37 @@
 
 
 
+<!-- 
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="columns is-multiline">
+      <div class="column is-half">
+        <div class="content has-text-centered">
+          <figure>
+            <img id="teaser" src="./static/images/mirage_icon.png" alt="mirage icon" style="width: 60%;">
+          </figure>
+        </div>
+      </div>
+      <div class="column is-half">
+        <div class="content has-text-centered">
+          <figure>
+            <img id="teaser" src="./static/images/mirage_transformer.png" alt="mirage icon" style="width: 40%;">
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+
 
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre>@article{chen2024mirage,
       title={Mirage: Cross-Embodiment Zero-Shot Policy Transfer with Cross-Painting},
-      author={Lawrence Yunliang Chen and Kush Hari and Karthik Dharmarajan and Quan Vuong and Ken Goldberg},
+      author={Lawrence Yunliang Chen and Kush Hari and Karthik Dharmarajan and Chenfeng Xu and Quan Vuong and Ken Goldberg},
       year={2024},
       eprint={TODO},
       archivePrefix={arXiv},
