@@ -53,19 +53,14 @@
       }
   </style>
   <style>
-    .aspect-ratio-container {
-      position: relative;
-      width: 100%; /* Container width */
-      padding-top: 56.25%; /* Aspect ratio padding for 16:9 images */
-    }
     .aspect-ratio-img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    max-height: 600px; /* Example max height */
+    object-fit: cover; /* Keeps the aspect ratio */
+  }
+    .aspect-ratio-container {
+  background-size: cover;
+  background-position: center;
+}
   </style>
 </head>
 
