@@ -112,7 +112,7 @@
                   <span>Paper</span>
                 </a>
               </span>
-              <span class="link-block">
+              <!-- <span class="link-block">
                 <a href=" "
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -120,7 +120,7 @@
                   </span>
                   <span>arXiv</span>
                 </a>
-              </span>
+              </span> -->
               <!-- Video Link. -->
               <!-- <span class="link-block">
                 <a href=" "
@@ -250,7 +250,6 @@
           </figure>
         </div>
         <!--/ Results. -->
-
         </div>
       </div>
       <!--/ A Simulation Study. -->
@@ -260,7 +259,7 @@
 
 
 
-<section class="section">
+<section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
@@ -268,7 +267,7 @@
         <h2 class="title is-3">Mirage Pipeline</h2>
         <div class="content has-text-justified">
           <p>
-            We propose Mirage, a strategy to zero-shot transfer a trained vision-based policy from the source robot to the target robot. The key idea is “cross-painting”: replacing the target robot with the source robot in the camera observations at test time so that it appears to the policy as if the source robot were performing the task.
+            <strong>We propose Mirage, a simple strategy to zero-shot transfer a trained vision-based policy from the source robot to the target robot. The key idea is “cross-painting”: replacing the target robot with the source robot in the camera observations at test time so that it appears to the policy as if the source robot were performing the task.</strong>
           </p>
         </div>
         <div class="content has-text-centered">
@@ -294,13 +293,26 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <h2 class="title is-3">Simulation Experiments</h2>
-    <div class="hero-body">
+    <div class="content has-text-justified">
+      <p>
+        We choose Franka as the source robot and UR5e and Kinova Gen3 as the target robots and evaluate Mirage on the 5 tasks in Robosuite. We use the ground-truth forward dynamics. For each task, the source robot policy is trained with behavior cloning on the provided demonstration data using the LSTM architecture with the ResNet-18 visual encoder. The policies utilize 84x84 images, and \algoname operates at approximately 40 Hz to cross-paint the images. 
+      </p>
+    </div>
+    <div class="content has-text-centered">
       <figure>
         <img id="teaser" src="./static/images/sim_results.png" alt="sim experiments Image" style="height: 100%;">
         <figcaption>
-          Mirage Results on Transferring Vision-Based Policies in Simulation. For each task and robot arm combination, the Oracle represents the performance of a vision-based policy assuming access to a ground truth rendering of the source robot given the state of the target robot, the Naive 0-shot method directly passes the visual observation of the target robot to the policy, and Mirage uses cross-painting to generate the visual inputs for the policy. The methods are evaluated with the target robots having the source gripper (Franka gripper) and the original target gripper (Robotiq gripper) presented in that order.
+          Mirage Results on Transferring Vision-Based Policies in Simulation. 
         </figcaption>
       </figure>
+    </div>
+    <div class="content has-text-justified">
+      <p>
+        For each task and robot arm combination, the Oracle represents the performance of a vision-based policy assuming access to a ground truth rendering of the source robot given the state of the target robot, the Naive 0-shot method directly passes the visual observation of the target robot to the policy, and Mirage uses cross-painting to generate the visual inputs for the policy. For each method, the first number represents the success rate when the target robot uses the source robot (Franka) gripper and the second number corresponds to using the target robot's default gripper (Robotiq gripper). 
+      </p>
+      <p>
+        We see that in all cases, Mirage significantly outperforms the naive 0-shot performance without any visual gap mitigation. This suggests that cross-painting can effectively bridge the visual differences of the robots. 
+      </p>
     </div>
   </div>
 </section>
