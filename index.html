@@ -649,7 +649,7 @@
 
 <section class="hero teaser">
   <div class="container is-max-desktop">
-    <h2 class="title is-3">Physical Experiments</h2>
+    <h2 class="title is-3"><br>Physical Experiments</h2>
     <div class="content has-text-justified">
       <p>
         In physical experiments, we evaluate Mirage across 3 different embodiments: Franka with Franka and Robotiq 2F-85 grippers, and UR5 with Robotiq 2F-85 gripper. 
@@ -662,7 +662,7 @@
       <figure>
         <img id="teaser" src="./static/images/real_results.png" alt="real experiments Image" style="height: 100%;">
         <figcaption>
-          <strong>Mirage Results on Transferring Vision-Based Policies in Real.</strong> We evaluate Mirage on 4 tasks in 2 settings: <strong>Different Gripper:</strong> Transferring policies between the Franka gripper and the Robotiq 2F-85 gripper on a Franka robot. <strong>Different Robot:</strong> Using the Franka with either gripper as the source robot, and the UR5 robot with the Robotiq gripper as the target robot. <strong>Baseline/Baseline 0-shot:</strong> Separate Diffusion Policy models trained on the source robot data for each task and evaluated on the source robot or zero-shot on the target embodiments. <strong>Octo:</strong> Octo Base model finetuned on the source robot data from all tasks together and evaluated on the source robot or zero-shot on the target embodiments. <strong>Mirage:</strong> Evaluation of zero-shot transfer to the target embodiments using Mirage with the source policy being the corresponding baseline Diffusion Policy models
+          <strong>Mirage Results on Transferring Vision-Based Policies in Real.</strong> We evaluate Mirage on 4 tasks in 2 settings: <strong>Different Gripper:</strong> Transferring policies between the Franka gripper and the Robotiq 2F-85 gripper on a Franka robot. <strong>Different Robot:</strong> Using the Franka with either gripper as the source robot, and the UR5 robot with the Robotiq gripper as the target robot. <strong>Baseline/Baseline 0-shot:</strong> Separate Diffusion Policy models trained on the source robot data for each task and evaluated on the source robot or zero-shot on the target embodiments. <strong>Octo:</strong> Octo Base model finetuned on the source robot data from all tasks together and evaluated on the source robot or zero-shot on the target embodiments. <strong>Mirage:</strong> Evaluation of zero-shot transfer to the target embodiments using Mirage with the source policy being the corresponding baseline Diffusion Policy models.
         </figcaption>
       </figure>
     </div>
@@ -674,7 +674,8 @@
   </div>
 </section>
 
-<section class="section">
+<section class="hero is-light is-small">
+  <div class="hero-body">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <h2 class="title is-4">Videos</h2>
@@ -704,7 +705,7 @@
       </div>
 
 
-      <div class="column">
+      <!-- <div class="column">
         <h2 class="title is-3">Tiger Task</h2>
         <div class="content">
           <p>Cross-paint robot (UR5 and robotiq)</p>
@@ -718,9 +719,9 @@
             <source src="./static/videos/Tiger Task/tiger_combined_diff_gripper.mp4" type="video/mp4">
           </video>
         </div>
-      </div>
+      </div> -->
       <!-- Column for Open Drawer Task -->
-      <div class="column">
+      <!-- <div class="column">
         <h2 class="title is-3">Open Drawer Task</h2>
         <div class="content">
           <p>Cross-paint robot (UR5 and robotiq)</p>
@@ -735,7 +736,7 @@
           </video>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Additional rows for other tasks -->
     <div class="columns is-centered">
