@@ -156,7 +156,7 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero body">
-      <img id="teaser" src="./static/images/teaser.png" alt="Teaser Image" style="height: 100%;">
+      <img id="teaser" src="./static/images/teaser.png" alt="Teaser Image" style="width: 100%;">
       <h2 class="subtitle has-text-centered">
         <p>We study <b>zero-shot transfer of policy across embodiments.</b></p>
         <p>Assume there is a policy trained on a source robot (left). At test time, with an unseen target robot (middle), Mirage performs "cross-painting"---masking out the target robot in the image and inpainting the source robot at the same end effector pose---using robot URDFs and a renderer. By creating an illusion to the source robot policy (right) as if the source robot were performing the task, Mirage queries the source policy with the cross-painted image to obtain the action.</p>
@@ -226,7 +226,7 @@
         </div>
         <div class="hero-body">
           <figure>
-            <img id="teaser" src="./static/images/Sim_Tasks_Robots_Fig.png" alt="robots image" style="height: 100%;">
+            <img id="teaser" src="./static/images/Sim_Tasks_Robots_Fig.png" alt="robots image" style="width: 100%;">
             <figcaption>
               Simulation Tasks and Robots. We use 5 tasks in Robosuite: Lift, Stack, Can Pick-and-Place, Two Piece Assembly, and Square Peg Insertion, on 5 different target robots. In ORBIT, we select the block lifting task with the UR5 as the target robot. In RLBench, we select 2 tasks: Lifting a lid, and Pushing a button to turn on a lamp, with UR5 and Sawyer as the target robots.
             </figcaption>
@@ -246,7 +246,7 @@
           </p>
         </div>        <div class="hero-body">
           <figure>
-            <img id="teaser" src="./static/images/control_study_results.png" alt="control study results" style="height: 100%;">
+            <img id="teaser" src="./static/images/control_study_results.png" alt="control study results" style="width: 100%;">
             <figcaption>
               State-Based Policy Transfer Experiment Results. Results suggest that most unseen target robots can successfully perform the tasks using the source robot as its guide for where to move its gripper. Jaco has a 3-jaw gripper, which explains its lower success rates.
             </figcaption>
@@ -275,7 +275,7 @@
         </div>
         <div class="content has-text-centered">
           <figure>
-            <img id="teaser" src="./static/images/mirage_pipeline.png" alt="robots Image" style="height: 100%;">
+            <img id="teaser" src="./static/images/mirage_pipeline.png" alt="robots Image" style="width: 100%;">
             <figcaption>
               Illustration of Mirage’s pipeline.
             </figcaption>
@@ -304,7 +304,7 @@
     </div>
     <div class="content has-text-centered">
       <figure>
-        <img id="teaser" src="./static/images/sim_results.png" alt="sim experiments Image" style="height: 100%;">
+        <img id="teaser" src="./static/images/sim_results.png" alt="sim experiments Image" style="width: 100%;">
         <figcaption>
           <strong>Mirage Results on Transferring Vision-Based Policies in Simulation.</strong> For each task and robot arm combination, the Oracle represents the performance of a vision-based policy assuming access to a ground truth rendering of the source robot given the state of the target robot, the Naive 0-shot method directly passes the visual observation of the target robot to the policy, and Mirage uses cross-painting to generate the visual inputs for the policy. For each method, the first number represents the success rate when the target robot uses the source robot (Franka) gripper and the second number corresponds to using the target robot's default gripper (Robotiq gripper). 
         </figcaption>
@@ -665,7 +665,7 @@
     </div>
     <div class="content has-text-centered">
       <figure>
-        <img id="teaser" src="./static/images/real_results.png" alt="real experiments Image" style="height: 100%;">
+        <img id="teaser" src="./static/images/real_results.png" alt="real experiments Image" style="width: 100%;">
         <figcaption>
           <strong>Mirage Results on Transferring Vision-Based Policies in Real.</strong> We evaluate Mirage on 4 tasks in 2 settings: <strong>Different Gripper:</strong> Transferring policies between the Franka gripper and the Robotiq 2F-85 gripper on a Franka robot. <strong>Different Robot:</strong> Using the Franka with either gripper as the source robot, and the UR5 robot with the Robotiq gripper as the target robot. <strong>Baseline/Baseline 0-shot:</strong> Separate Diffusion Policy models trained on the source robot data for each task and evaluated on the source robot or zero-shot on the target embodiments. <strong>Octo:</strong> Octo Base model finetuned on the source robot data from all tasks together and evaluated on the source robot or zero-shot on the target embodiments. <strong>Mirage:</strong> Evaluation of zero-shot transfer to the target embodiments using Mirage with the source policy being the corresponding baseline Diffusion Policy models.
         </figcaption>
