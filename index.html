@@ -201,7 +201,7 @@
             Focusing on common robot arms with similar workspaces and 2-jaw grippers, we investigate the feasibility of zero-shot transfer. Through simulation studies on 8 manipulation tasks, <strong>we find that state-based Cartesian control policies can successfully zero-shot transfer to a target robot after accounting for forward dynamics.</strong> 
           </p>
           <p>  
-            To address robot visual disparities for vision-based policies, <strong>we introduce Mirage, which uses “cross-painting”—-masking out the unseen target robot and inpainting the seen source robot—-during execution in real time so that it appears to the policy as if the trained source robot were performing the task.</strong> Despite its simplicity, our extensive simulation and physical experiments provide strong evidence that <strong>Mirage can successfully zero-shot transfer between different robot arms and grippers with only minimal performance degradation on a variety of manipulation tasks such as picking, stacking, and assembly, significantly outperforming a generalist policy.</strong>
+            To address robot visual disparities for vision-based policies, <strong>we introduce Mirage, which uses “cross-painting”—-masking out the unseen target robot and inpainting the seen source robot—-during execution in real time so that it appears to the policy as if the trained source robot were performing the task.</strong>  Mirage applies to both first-person and third-person camera views and policies that take in both states and images as inputs or only images as inputs. Despite its simplicity, our extensive simulation and physical experiments provide strong evidence that <strong>Mirage can successfully zero-shot transfer between different robot arms and grippers with only minimal performance degradation on a variety of manipulation tasks such as picking, stacking, and assembly, significantly outperforming a generalist policy.</strong>
           </p>
         </div>
       </div>
@@ -683,15 +683,15 @@
     </div>
     <div class="content has-text-centered">
       <figure>
-        <img id="teaser" src="./static/images/real_results.png" alt="real experiments Image" style="width: 100%;">
+        <img id="teaser" src="./static/images/real_results_side.png" alt="real experiments Image" style="width: 100%;">
         <figcaption>
-          <strong>Mirage Results on Transferring Vision-Based Policies in Real.</strong> We evaluate Mirage on 4 tasks in 2 settings: <strong>Different Gripper:</strong> Transferring policies between the Franka gripper and the Robotiq 2F-85 gripper on a Franka robot. <strong>Different Robot:</strong> Using the Franka with either gripper as the source robot, and the UR5 robot with the Robotiq gripper as the target robot. <strong>Baseline/Baseline 0-shot:</strong> Separate Diffusion Policy models trained on the source robot data for each task and evaluated on the source robot or zero-shot on the target embodiments. <strong>Octo:</strong> Octo Base model finetuned on the source robot data from all tasks together and evaluated on the source robot or zero-shot on the target embodiments. <strong>Mirage:</strong> Evaluation of zero-shot transfer to the target embodiments using Mirage with the source policy being the corresponding baseline Diffusion Policy models.
+          <strong>Mirage Results on Transferring Vision-Based Policies in Real with a Third-Person Camera.</strong> We evaluate Mirage on 4 tasks in 2 settings: Target (Different) Gripper (“T Grip”) and Target (Different) Robot (“T Rob”). <strong>Baseline (Diffusion Policy):</strong> Separate Diffusion Policy models trained on the source robot data for each task and evaluated zero-shot on the target embodiments. <strong>Octo:</strong> Octo Base model finetuned on the source robot data from all tasks together and evaluated zero-shot on the target embodiments. <strong>Mirage:</strong> Evaluation of zero-shot transfer to the target embodiments using Mirage with the source policy being the corresponding baseline Diffusion Policy models. For policies that take in both states and images as inputs, Mirage applies both state alignment (SA) and cross-painting (CP). For policies that take in only images as inputs, Mirage applies cross-painting only. We perform ablations to study the importance of state alignment and cross-painting.
         </figcaption>
       </figure>
     </div>
     <div class="content has-text-justified">
       <p>
-        From the results, we can see that, for both gripper transfer and robot (and gripper) transfer, Mirage achieves strong zero-shot performance, significantly outperforming both baselines. In particular, when evaluating on the UR5, neither baselines are able to achieve any success on the 3 more difficult tasks, while Mirage has at most a 30% gap from the source robot performance.
+        From the results, we can see that, for both gripper transfer and robot (and gripper) transfer, Mirage achieves strong zero-shot performance, significantly outperforming all baselines. 
       </p>
     </div>
     <br>
@@ -705,7 +705,7 @@
       <h2 class="title is-4">Videos</h2>
         <div class="content has-text-justified">
           <p>
-            The videos below show transferring from Franka to UR5 and Kinova3 but with the same Franka gripper. For each video, the left shows the oracle rendering, the middle shows the Mirage cross-painted image, and the right shows the target robot image.
+            The videos below show physical experiment evaluations. The left show transferring grippers, and the right show transferring between robots.
           </p>
         </div>
       
